@@ -1,85 +1,85 @@
 #include "shell.h"
 
 /**
- * _eput - prints an input string
- * @strn: the string to be printed
+ *_eputs - prints an input string
+ * @str: the string to be printed
  *
  * Return: Nothing
  */
-void _eput(char *strn)
+void _eputs(char *str)
 {
-	int y = 0;
+	int i = 0;
 
-	if (!strn)
+	if (!str)
 		return;
-	while (strn[y] != '\0')
+	while (str[i] != '\0')
 	{
-		_eputchar(strn[y]);
-		y++;
+		_eputchar(str[i]);
+		i++;
 	}
 }
 
 /**
  * _eputchar - writes the character c to stderr
- * @b: The character to print
+ * @c: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _eputchar(char b)
+int _eputchar(char c)
 {
-	static int y;
-	static char but[WRITE_BUT_SIZE];
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
 
-	if (b == BUT_FLUSH || y >= WRITE_BUT_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(2, but, y);
-		y = 0;
+		write(2, buf, i);
+		i = 0;
 	}
-	if (b != BUT_FLUSH)
-		but[y++] = b;
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
 	return (1);
 }
 
 /**
- * _putfc - writes the character b to given fc
- * @b: The character to print
- * @fc: The filedescriptor to write to
+ * _putfd - writes the character c to given fd
+ * @c: The character to print
+ * @fd: The filedescriptor to write to
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putfd(char b, int fc)
+int _putfd(char c, int fd)
 {
-	static int y;
-	static char but[WRITE_BUT_SIZE];
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
 
-	if (b == BUT_FLUSH || y >= WRITE_BUT_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(fc, but, y);
-		y = 0;
+		write(fd, buf, i);
+		i = 0;
 	}
-	if (b != BUT_FLUSH)
-		but[y++] = b;
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
 	return (1);
 }
 
 /**
- * _putsfc - prints an input string
- * @strn: the string to be printed
- * @fc: the filedescriptor to write to
+ *_putsfd - prints an input string
+ * @str: the string to be printed
+ * @fd: the filedescriptor to write to
  *
  * Return: the number of chars put
  */
-int _putsfc(char *strn, int fc)
+int _putsfd(char *str, int fd)
 {
-	int y = 0;
+	int i = 0;
 
-	if (!strn)
+	if (!str)
 		return (0);
-	while (*strn)
+	while (*str)
 	{
-		y += _putfc(*strn++, fc);
+		i += _putfd(*str++, fd);
 	}
-	return (y);
+	return (i);
 }

@@ -24,7 +24,7 @@ char *get_histry_fle(info_t *inf)
 }
 
 /**
- * wrte_histry - creates a file, or appends to an existing file
+ * wrte_histry - creates a file type, or appends to an existing file
  * @inf: the parameter struct
  *
  * Return: 1 on success, else -1

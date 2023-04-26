@@ -47,7 +47,7 @@ typedef struct liststrn
 {
 	int nm;
 	char *strn;
-	struct liststrn *next;
+	struct liststrn *nxt;
 } list_t;
 
 /**
@@ -72,7 +72,7 @@ typedef struct liststrn
  * @readfc: the fc from which to read line input
  * @histcount: the history line number count
  */
-typedef struct passinfo
+typedef struct passinf
 {
 	char *argu;
 	char **argb;

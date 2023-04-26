@@ -3,7 +3,7 @@
 /**
  * add_nde - adds a node to the start of the list
  * @hd: address of pointer to head node
- * @str: str field of node
+ * @strn: strn field of node
  * @num: node index used by history
  *
  * Return: size of list
@@ -136,7 +136,7 @@ int delete_node_at_index(list_t **hd, unsigned int indx)
 
 /**
  * free_lst - frees all nodes of a list
- * @hd_ptr: address of pointer to head node
+ * @head_ptr: address of pointer to head node
  *
  * Return: void
  */

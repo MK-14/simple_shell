@@ -48,9 +48,9 @@ int hsh(info_t *inf, char **ab)
  * @inf: the parameter & return info struct
  *
  * Return: -1 if builtin not found,
- * 	0 if builtin executed successfully,
- * 	1 if builtin found but not successful,
- * 	2 if builtin signals exit()
+ * 0 if builtin executed successfully,
+ * 1 if builtin found but not successful,
+ * 2 if builtin signals exit()
  */
 int find_builtin(info_t *inf)
 {
@@ -125,7 +125,7 @@ void find_cmd(info_t *inf)
  *
  * Return: void
  */
-void fork_cmd(info_t *in)
+void fork_cmd(info_t *inf)
 {
 	pid_t child_pid;
 

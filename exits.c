@@ -1,74 +1,74 @@
 #include "shell.h"
 
 /**
- * _strncopy - copies a string
- * @des: the destination string to be copied to
- * @sorc: the source string
- * @a: the amount of characters to be copied
- * Return: the concatenated string
+ **_strncpy - copies a string
+ *@dest: the destination string to be copied to
+ *@src: the source string
+ *@n: the amount of characters to be copied
+ *Return: the concatenated string
  */
-char *_strncopy(char *des, char *sorc, int a)
+char *_strncpy(char *dest, char *src, int n)
 {
-	int y, k;
-	char *z = des;
+	int i, j;
+	char *s = dest;
 
-	y = 0;
-	while (sorc[y] != '\0' && y < a - 1)
+	i = 0;
+	while (src[i] != '\0' && i < n - 1)
 	{
-		des[y] = sorc[y];
-		y++;
+		dest[i] = src[i];
+		i++;
 	}
-	if (y < a)
+	if (i < n)
 	{
-		k = y;
-		while (k < a)
+		j = i;
+		while (j < n)
 		{
-			des[k] = '\0';
-			k++;
+			dest[j] = '\0';
+			j++;
 		}
 	}
-	return (z);
+	return (s);
 }
 
 /**
- * _strnct - concatenates two strings
- * @des: the first string
- * @sorc: the second string
- * @a: the amount of bytes to be maximally used
- * Return: the concatenated string
+ **_strncat - concatenates two strings
+ *@dest: the first string
+ *@src: the second string
+ *@n: the amount of bytes to be maximally used
+ *Return: the concatenated string
  */
-char *_strnct(char *des, char *sorc, int a)
+char *_strncat(char *dest, char *src, int n)
 {
-	int y, k;
-	char *z = des;
+	int i, j;
+	char *s = dest;
 
-	y = 0;
-	k = 0;
-	while (des[y] != '\0')
-		y++;
-	while (sorc[k] != '\0' && k < n)
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0' && j < n)
 	{
-		des[k] = sorc[k];
-		y++;
-		k++;
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	if (k < a)
-		des[y] = '\0';
-	return (z);
+	if (j < n)
+		dest[i] = '\0';
+	return (s);
 }
 
 /**
- * _strchar - locates a character in a string
- * @z: the string to be parsed
- * @b: the character to look for
- * Return: (z) a pointer to the memory area b
+ **_strchr - locates a character in a string
+ *@s: the string to be parsed
+ *@c: the character to look for
+ *Return: (s) a pointer to the memory area s
  */
-char *_strchar(char *z, char b)
+char *_strchr(char *s, char c)
 {
 	do {
-		if (*z == b)
-			return (z);
-	} while (*z++ != '\0');
+		if (*s == c)
+			return (s);
+	} while (*s++ != '\0');
 
 	return (NULL);
 }

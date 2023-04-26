@@ -2,62 +2,64 @@
 
 /**
  * interactive - returns true if shell is interactive mode
- * @inf: struct address
+ * @info: struct address
  *
  * Return: 1 if interactive mode, 0 otherwise
  */
-int interactive(inf_t *inf)
+int interactive(info_t *info)
 {
-	return (isatty(STDIN_FILENO) && inf->readfd <= 2);
+	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 
 /**
- * is_deli - checks if character is a delimeter
- * @b: the char to check
- * @deli: the delimeter string
+ * is_delim - checks if character is a delimeter
+ * @c: the char to check
+ * @delim: the delimeter string
  * Return: 1 if true, 0 if false
  */
-int is_deli(char b, char *deli)
+int is_delim(char c, char *delim)
 {
-	while (*deli)
-		if (*deli++ == c)
+	while (*delim)
+		if (*delim++ == c)
 			return (1);
 	return (0);
 }
 
 /**
- * _isal - checks for alphabetic character
- * @x: The character to input
- * Return: 1 if c is alphabetic, 0 otherwise
+ *_isalpha - checks for alphabetic character
+ *@c: The character to input
+ *Return: 1 if c is alphabetic, 0 otherwise
  */
-int _isal(int x)
+
+int _isalpha(int c)
 {
-	if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
 	else
 		return (0);
 }
 
 /**
- * _atoi - converts a string to an integer
- * @z: the string to be converted
- * Return: 0 if no numbers in string, converted number otherwise
+ *_atoi - converts a string to an integer
+ *@s: the string to be converted
+ *Return: 0 if no numbers in string, converted number otherwise
  */
-int _atoi(char *z)
+
+int _atoi(char *s)
 {
-	int y, sign = 1, flag = 0, output;
+	int i, sign = 1, flag = 0, output;
 	unsigned int result = 0;
 
-	for (y = 0; z[y] != '\0' && flag != 2; y++)
+	for (i = 0;  s[i] != '\0' && flag != 2; i++)
 	{
-		if (z[y] == '-')
+		if (s[i] == '-')
 			sign *= -1;
 
-		if (z[y] >= '0' && z[y] <= '9')
+		if (s[i] >= '0' && s[i] <= '9')
 		{
 			flag = 1;
 			result *= 10;
-			result += (z[y] - '0');
+			result += (s[i] - '0');
 		}
 		else if (flag == 1)
 			flag = 2;

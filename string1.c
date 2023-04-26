@@ -1,41 +1,41 @@
 #include "shell.h"
 
 /**
- * _strcopy - copies a string
- * @dst: the destination
- * @sorc: the source
+ * _strcpy - copies a string
+ * @dest: the destination
+ * @src: the source
  *
  * Return: pointer to destination
  */
-char *_strcopy(char *dst, char *sorc)
+char *_strcpy(char *dest, char *src)
 {
-	int y = 0;
+	int i = 0;
 
-	if (dst == sorc || sorc == 0)
-		return (dst);
-	while (sorc[y])
+	if (dest == src || src == 0)
+		return (dest);
+	while (src[i])
 	{
-		dst[y] = sorc[y];
-		y++;
+		dest[i] = src[i];
+		i++;
 	}
-	dst[y] = 0;
-	return (dst);
+	dest[i] = 0;
+	return (dest);
 }
 
 /**
  * _strdup - duplicates a string
- * @strn: the string to duplicate
+ * @str: the string to duplicate
  *
  * Return: pointer to the duplicated string
  */
-char *_strdup(const char *strn)
+char *_strdup(const char *str)
 {
 	int length = 0;
 	char *ret;
 
-	if (strn == NULL)
+	if (str == NULL)
 		return (NULL);
-	while (*strn++)
+	while (*str++)
 		length++;
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
@@ -46,43 +46,42 @@ char *_strdup(const char *strn)
 }
 
 /**
- * _puts - prints an input string
- * @strn: the string to be printed
+ *_puts - prints an input string
+ *@str: the string to be printed
  *
  * Return: Nothing
  */
-void _puts(char *strn)
+void _puts(char *str)
 {
-	int y = 0;
+	int i = 0;
 
-	if (!strn)
+	if (!str)
 		return;
-	while (strn[y] != '\0')
+	while (str[i] != '\0')
 	{
-		_putchar(strn[y]);
-		y++;
+		_putchar(str[i]);
+		i++;
 	}
 }
 
 /**
  * _putchar - writes the character c to stdout
- * @b: The character to print
+ * @c: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int _putchar(char b)
+int _putchar(char c)
 {
-	static int y;
-	static char but[WRITE_BUF_SIZE];
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
 
-	if (b == BUF_FLUSH || y >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(1, but, y);
-		y = 0;
+		write(1, buf, i);
+		i = 0;
 	}
-	if (b != BUF_FLUSH)
-		but[y++] = b;
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
 	return (1);
 }
-
